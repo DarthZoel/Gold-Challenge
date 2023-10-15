@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "Santiago Bernabeu",
+        "price": "350_000",
+        "img" : null, 
+        "available" : true
+    },
+    {
+        "id": 2,
+        "title": "Camp Nou",
+        "price": "300_000",
+        "img" : null, 
+        "available" : true
+    },
+    {
+        "id": 3,
+        "title": "Old Trafford",
+        "price": "200_000",
+        "img" : null, 
+        "available" : true
+    },
+    {
+        "id": 4,
+        "title": "Etihad Stadium",
+        "price": "250_000",
+        "img" : null, 
+        "available" : true
+    }
+]
