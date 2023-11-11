@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KuYlaa By DarthZoel</title>
+    <link href="/css/fieldBook.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <a class="navbar-brand" href="#">KuYlaa</a>
+        <nav class="navbar-path">
+            <a href="/api/home">Home</a>
+            <a href="/api/booking">Booking</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+        <div class="field">
+            <div class="card">
+                <img src="<%= venue.image_url %>" alt="Lapangan" style="width:100%">
+                </div>                
+        </div>
+        <div class="field-info">
+            <h1><%= venue.field_name %></h1>
+            <h3>Everyday : 09 AM - 10 PM </h3>
+            <h3>Price : Rp. <%= venue.price_per_hour %> </h3>
+            <h3>Adress : <%= venue.location %> </h3>
+            <h3><%= venue.field_description %> </h3>
+        </div>
+        <div class="book-field">
+            <h1>Book The Field!</h1>
+
+            <form action="/api/book-venue" method="post">
+                <label for="start_time">Choose Date And Time:</label>
+                <input type="datetime-local" id="start_time" name="start_time" required>
+                <input type="hidden" name="user_id" value="1">
+                <input type="hidden" name="field_id" value="<%= venue.field_id %>">
+                <input type="hidden" name="total_price" value="<%= venue.price_per_hour %>">
+                <button type="submit">Submit Booking</button>
+            </form>   
+        </div>
+        
+
+    
+    <div class="footer">
+        <p>&copy; 2023 KuYlaa By DarthZoel. All rights reserved.</p>
+    </div>
+</body>
+
+</html>
