@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KuYlaa By DarthZoel</title>
+    <link href="/css/booking.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <a class="navbar-brand" href="#">KuYlaa</a>
+        <nav class="navbar-path">
+            <a href="/api/home">Home</a>
+            <a href="/api/booking">Booking</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+    <div class="sec-header">
+        <h2>Choose The Field :</h2>
+    </div>
+    <div class="content">
+        <% dbVenues.forEach(el=> { %>
+            <div class="card">
+                <a href="/api/all-venues/:<%= el.field_id %>">
+                <img src="<%= el.image_url %>" alt="Lapangan" style="width:100%">
+                <div class="container">
+                    <h4><b>
+                            <%= el.field_name %>
+                        </b></h4>
+                    <p>
+                        <%= el.location %>
+                    </p>
+                </div>
+            </a>
+            </div>
+            <% }) %>
+            <% dbVenues.forEach(el=> { %>
+                <div class="card">
+                    <a href="/api/all-venues/:<%= el.field_id %>">
+                    <img src="<%= el.image_url %>" alt="Lapangan" style="width:100%">
+                    <div class="container">
+                        <h4><b>
+                                <%= el.field_name %>
+                            </b></h4>
+                        <p>
+                            <%= el.location %>
+                        </p>
+                    </div>
+                </a>
+                </div>
+                <% }) %>
+                <% dbVenues.forEach(el=> { %>
+                    <div class="card">
+                        <a href="/api/all-venues/:<%= el.field_id %>">
+                        <img src="<%= el.image_url %>" alt="Lapangan" style="width:100%">
+                        <div class="container">
+                            <h4><b>
+                                    <%= el.field_name %>
+                                </b></h4>
+                            <p>
+                                <%= el.location %>
+                            </p>
+                        </div>
+                    </a>
+                    </div>
+                    <% }) %>
+            
+                
+    </div>
+    <div class="footer">
+        <p>&copy; 2023 KuYlaa By DarthZoel. All rights reserved.</p>
+    </div>
+</body>
+
+</html>
