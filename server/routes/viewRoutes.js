@@ -6,6 +6,7 @@ routes.get('/home', ViewControllers.getLandingPage)
 routes.get('/booking', ViewControllers.getBookingPage)
 routes.get('/signup', ViewControllers.getSignUpPage)
 routes.get('/login', ViewControllers.getLoginPage)
+routes.get('/contact', ViewControllers.getContactUs)
 
 
 module.exports = routes

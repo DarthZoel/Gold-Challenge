@@ -4,7 +4,6 @@ class UserController {
     static async getUser(req, res) {
         try {
             const dbUser = await db.select("*").from("users")
-            //console.log("sampe usercontroller, get user")
             res.status(200).send(dbUser)
         } catch (error) {
             res.status(404).json(error)
@@ -31,8 +30,8 @@ class UserController {
             if (!user) {
                 return res.status(401).send('Invalid username or password');
             }
-            console.log(user)
-            res.status(200).render('home', {user});
+            req.session.user = {user};
+            res.status(302).redirect('/api/home');
             
         } catch (error) {
             console.error(error);
@@ -72,6 +71,21 @@ class UserController {
             res.status(404).json(error)
         }
 
+    }
+    static async logout(req, res) {
+        try {
+            req.session.destroy((err) => {
+                if (err) {
+                  console.error(err);
+                  res.send('Error during logout.');
+                } else {
+                    res.status(302).redirect('/api/login');
+                }
+              });
+              
+        } catch (error) {
+            res.status(404).json(error)
+        }
     }
 }
 

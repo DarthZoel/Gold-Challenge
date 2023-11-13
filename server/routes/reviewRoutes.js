@@ -1,5 +1,5 @@
 const express = require('express')
-const { getAllReview, editReview, createReview, deleteReview, getAllReviewByFieldId } = require('../controllers/reviewcontroller')
+const { getAllReview, editReview, createReview, deleteReview, getAllReviewByFieldId } = require('../controllers/reviewController')
 const routes = express.Router()
 
 routes.get('/review', getAllReview)
