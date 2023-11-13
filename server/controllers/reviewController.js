@@ -21,16 +21,15 @@ class ReviewControllers {
 
     }
     static async createReview(req, res) {
-        const { user_id, field_id, review_text, rating } = req.body;
+        const { user_id, field_id, review_text} = req.body;
         let data = {
             user_id,
             field_id,
             review_text,
-            rating
         }
         try {
             await db('reviews').insert(data);
-            res.send('Review created successfully');
+            res.status(201).send('Review created successfully');
         } catch (error) {
             console.error(error);
             res.status(500).send('Error creating review');
@@ -41,7 +40,7 @@ class ReviewControllers {
         const { reviewText } = req.body;
         try {
           const result = await db('reviews').where({ review_id: reviewId }).update({ review_text: reviewText });
-          if (result === 0) {
+          if (!result) {
             return res.status(404).send('Review not found');
           }
           return res.send('Review updated successfully');

@@ -14,12 +14,16 @@ class VenuesControllers {
     static async getVenueById(req, res) {
         const field_id = req.params.id.slice(1)
         try {
+            const user = req.session.user;
+            // next step ambil const review = await db review by fieldid
+            // const review = await db.select("*").from("reviews").where({field_id})
+            const reviews = await db.select("*").from("reviews").where({field_id})
+            console.log(reviews)
             const venue = await db('fields').where({ field_id }).first();
             if (!venue) {
                 return res.status(404).send('field not found');
             }
-            console.log(venue)
-            res.render("fieldBook", {venue})
+            res.render("fieldBook", {venue, user, reviews})
         } catch (error) {
             console.error(error);
             return res.status(500).send('Error retrieving field');
@@ -27,6 +31,7 @@ class VenuesControllers {
 
     }
     static async bookVenue(req, res) {
+        const user = req.session.user
         const { user_id, field_id, start_time, total_price } = req.body;
         const newBooking = {
             user_id,
@@ -40,7 +45,7 @@ class VenuesControllers {
                 return res.status(409).send('field already booked for this time');
             }
             await db("bookings").insert(newBooking)
-            res.status(201).json(`field booked succesfully`)
+            res.status(201).json(`field booked succesfully, thank you ${user.user.username} for booking on our services`)
         } catch (error) {
             res.status(404).json(error)
         }
